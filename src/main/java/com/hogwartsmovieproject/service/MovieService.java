@@ -11,5 +11,6 @@ public interface MovieService {
 	public Movie addMovie(Movie movie);
 	public List<Movie> getAllMovie();
 	public Optional<Movie> getMovieById(Long id);
+	public Movie updateMovie(Long id, Movie movie);
 	
 }

@@ -33,5 +33,20 @@ public class MovieServiceImpl implements MovieService{
 		return optionalMovie;
 	}
 
+	@Override
+	public Movie updateMovie(Long id, Movie movie) {
+	    Optional<Movie> existingMovieOpt = movieRepository.findById(id);
+	    if (existingMovieOpt.isPresent()) {
+	        Movie existingMovie = existingMovieOpt.get();
+	        existingMovie.setName(movie.getName());
+	        existingMovie.setProductionCompany(movie.getProductionCompany());
+	        existingMovie.setRunTime(movie.getRunTime());
+	        existingMovie.setSynopsis(movie.getSynopsis());
+	        existingMovie.setTheatricalReleaseDate(movie.getTheatricalReleaseDate());
+	        return movieRepository.save(existingMovie);
+	    }
+	    return null; // or throw exception or return Optional<Movie>
+	}
+
 
 }
